@@ -43,7 +43,7 @@ describe("first", function() {
   });
 
 });
-/*
+
 describe("each", function() {
   it("should provide value and iteration count", function() {
     var letters = ['a', 'b', 'c'];
@@ -60,7 +60,7 @@ describe("each", function() {
     ]);
   });
 });
-
+/*
 describe("indexOf", function() {
 
   it("should be able to compute indexOf even when the native function is undefined", function() {
