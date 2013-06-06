@@ -6,7 +6,7 @@ var _ = {};
   // return just the last element.
   _.last = function(array, n) {
     var len = array.length;
-    
+
     if (n === undefined){
       return array[len-1];
     }else {
@@ -17,22 +17,24 @@ var _ = {};
       }
       return result;
     }
-
-    /*else if (n==0){
-      return [];
-    }    
-    else if (Array.isArray(array)){
-      return array.slice(-n);
-    }else{
-
-    }
-    */
   };
 
   // Like last, but for the first elements
   _.first = function(array, n) {
     // TIP: you can often re-use similar functions in clever ways, like so:
-    return _.last(array.reverse(), n);
+    if (Array.isArray(array)){
+      var result = _.last(array.reverse(), n);
+      if (Array.isArray(result)){result.reverse();}
+      return result;
+    }else{
+      var len = array.length,
+          result = [],
+          n = Math.min(len, n);
+      for (var i = 0; i<n; i++ ){
+        result.push(array[i]);
+      }
+      return result;
+    }
   };
 
 
