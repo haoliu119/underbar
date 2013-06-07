@@ -157,7 +157,7 @@ describe("pluck", function() {
     expect(_.pluck(people, 'name')).to.eql(['moe', 'curly']);
   });
 });
-/*
+
 describe("invoke", function() {
   it("should sort the first array", function() {
     var lists = [[5, 1, 7], [3, 2, 1]];
@@ -186,7 +186,7 @@ describe("invoke with function reference", function() {
   });
 });
 
-*/
+
 describe("reduce", function() {
   it("should be able to sum up an array", function() {
     var callback = function(sum, num) {return sum + num; };
