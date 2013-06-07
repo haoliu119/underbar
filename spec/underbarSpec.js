@@ -89,7 +89,7 @@ describe("indexOf", function() {
     expect(_.indexOf(numbers, 40)).to.be(1);
   });
 });
-/*
+
 describe("filter", function() {
   it("should return all even numbers in an array", function() {
     var isEven = function(num) {
@@ -107,7 +107,7 @@ describe("filter", function() {
     expect(odds).to.eql([1, 3, 5]);
   });
 });
-
+/*
 describe("reject", function() {
   it("should reject all even numbers", function() {
     var isEven = function(num) { return num % 2 === 0; };
