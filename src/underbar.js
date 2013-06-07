@@ -134,6 +134,12 @@ var _ = {};
 
   // Calls the method named by methodName on each value in the list.
   _.invoke = function(list, methodName) {
+    var method = new Function(methodName);
+    method.apply(this, list);
+ //   _.each (list, function (el){
+ //     method.apply(this, )
+ //   });
+    return list;
   };
 
   // Reduces an array or object to a single value by repetitively calling
@@ -150,6 +156,13 @@ var _ = {};
   //   }, 0); // should be 6
   //
   _.reduce = function(obj, iterator, initialValue) {
+      if (initialValue == null){
+        initialValue = 0;
+      }
+      _.each(obj, function (el){
+        initialValue = iterator(initialValue, el);
+      });
+      return initialValue;
   };
 
   // Determine if the array or object contains a given value (using `===`).
@@ -157,17 +170,26 @@ var _ = {};
     // TIP: A lot of iteration problems can be most easily expressed in
     // terms of reduce(). Here's a freebie to demonstrate!
     return _.reduce(collection, function(wasFound, item){
-      if(wasFound){
-        return true;
-      }
-      return item === target;
-    }, false);
+        if(wasFound){
+          return true;
+        }
+        return item === target;
+      }, false);
   };
 
 
   // Determine whether all of the elements match a truth test.
+  /*
+  iterator
+  var getValue = function(i) { return i; }; true of false
+  var isEven = function(num) { return num % 2 === 0; }; true of false // as soon as false, all false
+
+    */
   _.every = function(obj, iterator) {
     // TIP: use reduce on this one!
+    return _.reduce(obj, function (init, el){
+        if (!iterator(el)){return false; } else {return init}
+    }, true);
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
