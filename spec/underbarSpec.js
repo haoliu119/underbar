@@ -139,7 +139,7 @@ describe("uniq", function() {
     expect(_.uniq(args)).to.eql([1, 2, 3, 4]);
   });
 });
-/*
+
 describe("map", function() {
   it("should apply a function to every value in an array", function() {
     var doubled = _.map([1, 2, 3], function(num) { return num * 2; });
@@ -157,7 +157,7 @@ describe("pluck", function() {
     expect(_.pluck(people, 'name')).to.eql(['moe', 'curly']);
   });
 });
-
+/*
 describe("invoke", function() {
   it("should sort the first array", function() {
     var lists = [[5, 1, 7], [3, 2, 1]];
