@@ -179,23 +179,29 @@ var _ = {};
 
 
   // Determine whether all of the elements match a truth test.
-  /*
-  iterator
-  var getValue = function(i) { return i; }; true of false
-  var isEven = function(num) { return num % 2 === 0; }; true of false // as soon as false, all false
-
-    */
-  _.every = function(obj, iterator) {
+  _.every = function(obj, iterator, init) {
     // TIP: use reduce on this one!
+    if (init == null){init = true;}
+
     return _.reduce(obj, function (init, el){
-        if (!iterator(el)){return false; } else {return init}
-    }, true);
+        if (iterator(el,init)&&init){return true;}  // if pass and init is true, then stay true
+        else if (!iterator(el, init)){return !init;}  // if don't pass iterator, flip init value
+        else{return init;}    
+    }, init);
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
   _.any = function(obj, iterator) {
     // TIP: re-use every() here
+    if (iterator === undefined){
+      iterator = function (el){return el;};
+    }
+   
+    return _.every (obj, function (el, init){
+      if (iterator(el)&&!init){return false;} // if pass but init is false, then tell (every)to flip init value
+      else {return true;} // init must be true already, stay true;
+    }, false);
   };
 
 
@@ -216,6 +222,15 @@ var _ = {};
   //   }); // obj1 now contains key1, key2, key3 and bla
   //
   _.extend = function(obj) {
+    var args = Array.prototype.slice.call(arguments);
+    args.shift(); // args contains all argument object beside obj
+
+  _.each (args, function (arg){
+        for (var prop in arg){
+          obj[prop] = arg[prop];
+        }
+   });
+    return obj;
   };
 
   // Like extend, but doesn't ever overwrite a key that already

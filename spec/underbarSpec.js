@@ -303,7 +303,7 @@ describe("any", function() {
     expect(_.any([0], passThrough)).to.equal(false);
   });
 });
-/*
+
 describe("extend", function() {
   it("should extend an object with the attributes of another", function() {
     var extended = _.extend({}, {a:'b'});
@@ -335,7 +335,7 @@ describe("extend", function() {
     expect(extended.hasOwnProperty('a') && extended.hasOwnProperty('b')).to.be(true);
   });
 });
-
+/*
 describe("defaults", function() {
   var result, options;
 
