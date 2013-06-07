@@ -335,7 +335,7 @@ describe("extend", function() {
     expect(extended.hasOwnProperty('a') && extended.hasOwnProperty('b')).to.be(true);
   });
 });
-/*
+
 describe("defaults", function() {
   var result, options;
 
@@ -359,7 +359,7 @@ describe("defaults", function() {
     expect(options.word).to.equal("word");
   });
 });
-
+/*
 describe("once", function() {
   it("should only run a user-defined function if it hasn't been run before", function() {
     var num = 0;
