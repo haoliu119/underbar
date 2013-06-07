@@ -40,9 +40,15 @@ var _ = {};
 
   // Call iterator(value, key, collection) for each element of collection
   _.each = function(obj, iterator) {  // takes an object and a fucntion, 
-      for (var i=0, len = obj.length; i<len; i++){
-        iterator (obj[i],i,obj);
-      }
+    if (typeof (obj.length)=="number") {  // to see if obj is an array, even if passed in as an argument object
+        for (var i=0, len = obj.length; i<len; i++){
+          iterator (obj[i],i,obj);
+        }  
+    }else{
+        for (var prop in obj){
+          iterator(obj[prop], prop, obj);
+        }
+    }
   };
 
   /*
